@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://Anjana-Sofia-Vakil-s-workspace-tq6lr1.eu-west-1.xata.sh/db/retrogames",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}
