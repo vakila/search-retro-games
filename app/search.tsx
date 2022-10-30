@@ -1,47 +1,68 @@
 'use client';
 
 import Image from 'next/image';
-import styles from './page.module.css';
+import styles from '../app/page.module.css';
 import { use, useState, useEffect } from 'react';
+import * as debounce from 'lodash.debounce';
 
+const searchGames = async (term, callback) => {
+  let url = `/api/search?term=${term}`;
+  // if (consoles && consoles.length) url += CONSOLES.filter((c,i) => consoles[i]).map(c => `&console=${c}`).join("");
+  const response = await fetch(url);
 
-async function getSearchData(term: string) {
-  if (term ) {
-    const res = await fetch('/api/hello');
-    // const res = await fetch(`/api/search?query=${term}`) 
-    return res.json();
-  } else {
-    return [];
-  }
+  return callback(await response.json());
 }
 
+const debouncedSearch = debounce(searchGames, 500);
+
 export default function Search() {
-  const [searched, setSearched] = useState("batman");
+  const [searched, setSearched] = useState("");
+  const [games, setGames] = useState([])
+  // const results = searched ? use(getSearchData(searched)) : [];
+
+
+  useEffect(() => {
+    if (searched) {
+      debouncedSearch(searched, 
+        results => setGames(results.map(r => r.record)));
+    }
+    console.log(games.length);
+  }, [searched]);
+
 
   return (
     <div className={styles.container}>
 
       <input type="search" value={searched}
-       onChange={(e) => console.log(e.target.value)} 
+       onChange={(e) => setSearched(e.target.value)} 
        />
         
-      <SearchResults term={searched} />
+        <div className={styles.grid} >
+        {games.map(({url, name, console, id}: {url: string, name: string, console: string, id: string}) => 
+            <a key={id} href={url || ""} className={styles.card} >
+              <h2>{name}</h2>
+              <p>{console}</p>
+            </a>
+          )}
+      </div>
     </div>
 
   )
 }
 
-function SearchResults({term}: {term: string}) {
-  const results = use(getSearchData(term));
+// function SearchResults({results}: {results: any[]}) {
+//   // if (!term) return null;
+//   // return null;
 
-  return (<div className={styles.grid} >
-        {results.map(({url, name, console}: {url: string, name: string, console: string}) => 
-            <a href={url || ""} className={styles.card} >
-              <h2>{name}</h2>
-              <p>{console}</p>
-            </a>
-          )}
-      </div>)
-}
+//   return (<div className={styles.grid} >
+//         {results.map(({url, name, console}: {url: string, name: string, console: string}) => 
+//             <a key={name} href={url || ""} className={styles.card} >
+//               <h2>{name}</h2>
+//               <p>{console}</p>
+//             </a>
+//           )}
+//       </div>)
+        
+// }
 
 
