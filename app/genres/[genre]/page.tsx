@@ -9,7 +9,7 @@ export default async function Page({params}: {
     console.log("GENRE", params.genre, JSON.stringify(params.genre));
 
     const result = await xata.db.games
-    .filter({ genres: { $includes: JSON.stringify("Puzzle") } })
+    .filter({ genres: { "$includes": `"Puzzle"` } })
       .getPaginated();
 
       console.log(result);
