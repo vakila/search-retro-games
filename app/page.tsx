@@ -1,13 +1,37 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+import Image from 'next/image';
+import styles from './page.module.css';
+import { getXataClient } from '../src/xata';
+import Search from "./search";
 
-export default function Home() {
+const xata = getXataClient();
+
+const GENRES = ["Role-playing (RPG)", "Point-and-click", "Puzzle", "Adventure", "Sport", "Card & Board Game", "Platform", "Racing", "Fighting", "Music", "Strategy", "Arcade", "Shooter", "Simulator", "Turn-based strategy (TBS)", "Real Time Strategy (RTS)", "Hack and slash/Beat 'em up", "Quiz/Trivia", "Tactical", "Pinball", "Indie", "Visual Novel"];
+
+export default async function Home() {
+  // const {records} = await xata.db.games
+  //   .filter({ $exists: "totalRating"  })
+  //   .sort("totalRating", "desc")
+  //   .getPaginated();
+
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js 13!</a>
+          Find retro games!
         </h1>
+
+        <Search />
+
+        {/* <div className={styles.grid}>
+          {records.map(g => 
+            <a href={g.url || ""} className={styles.card} >
+              <h2>{g.name}</h2>
+              <p>{g.console}</p>
+            </a>
+          )}
+        </div> */}
+
+
 
         <p className={styles.description}>
           Get started by editing{' '}
