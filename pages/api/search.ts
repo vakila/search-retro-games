@@ -24,7 +24,9 @@ export default async function handler(
     fuzziness: 0,
     prefix: "phrase",
   });
+  const recordsWithMeta = records.map(r => r.record); 
+  // TODO maybe show highlights in playground rather than here
 
 
-  res.status(200).json(records)
+  res.status(200).json(recordsWithMeta)
 }

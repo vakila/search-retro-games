@@ -8,6 +8,7 @@ import debounce from 'lodash.debounce';
 import { CONSOLES, getConsoleName } from "../src/consoles";
 import type { Games } from '../src/xata';
 
+// TODO search time & highlights
 
 
 const searchGames = async (term: string, consoles: boolean[], callback: (results: { record: Games}[]) => void) => {
@@ -28,7 +29,7 @@ export default function Search() {
   useEffect(() => {
     if (searched) {
       debouncedSearch(searched, consoles,
-        (results: { record: Games }[]) => setGames(results.map(r => r.record)));
+        (results: any) => setGames(results));
     }
     console.log(games.length);
   }, [searched, consoles]);
@@ -52,13 +53,15 @@ export default function Search() {
       </aside>
 
       <div className={styles.container} style={{width:"70%"}} >
-        {games.map(({ id, name, console, cover, genres}: Games) =>
+        {games.map(({id, console, genres, name, cover, highlight}) => 
+      
           <Link key={id} href={`/games/${id}`} className={styles.card} style={{display: "block"}} >
             <div style={{display:"grid", gridTemplateColumns:"75% 25%", gap:".75em"}}>
               <div>
                 <h2>{name}</h2>
                 <p>{console && getConsoleName(console)}</p>
                 <p>{genres && genres.length && genres.map(g => JSON.parse(g)).join(", ")}</p>
+                <p>{JSON.stringify(highlight)}</p>
               </div>
               <p>{cover && <img src={cover} />}</p>
             </div>

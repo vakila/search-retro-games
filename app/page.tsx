@@ -3,13 +3,25 @@ import styles from './page.module.css';
 import Search from "./search";
 
 
+
+import { getXataClient } from "../src/xata";
+
+const xata = getXataClient();
+
+
 export default async function Home() {
+
+  const {aggs: {totalCount}} = await xata.db.games.aggregate({
+    totalCount: {
+        count: "*",
+    },
+  });
 
   return (
     <div className={styles.container}>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Find retro games!
+          Search {totalCount} retro games!
         </h1>
 
         <Search />
