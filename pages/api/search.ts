@@ -14,19 +14,12 @@ export default async function handler(
     term = term.join(" ");
   }  
   
-  const records = await xata.search.all(term as string, {
-    tables: [console && console.length 
-      ? { 
-          table: "games" ,
-          filter: { console: { $any: Array.isArray(console)? console: [console] } }
-        }
-      : { table: "games"}],
+  const records = await xata.db.games.search(term as string, {
+    filter: console && console.length ? { console: { $any: Array.isArray(console)? console: [console] } } : undefined,
     fuzziness: 0,
     prefix: "phrase",
+    boosters: [{ numericBooster: { column: "totalRating", factor: 2 } }]
   });
-  const recordsWithMeta = records.map(r => r.record); 
-  // TODO maybe show highlights in playground rather than here
 
-
-  res.status(200).json(recordsWithMeta)
+  res.status(200).json(records)
 }
