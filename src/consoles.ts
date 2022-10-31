@@ -90,3 +90,6 @@ export const CONSOLES = [
     },
   ];
   
+  export function getConsoleName(id: string) {
+    return CONSOLES.filter(c => c.id === id)[0].name;
+  }

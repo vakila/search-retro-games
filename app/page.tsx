@@ -1,11 +1,7 @@
 import Image from 'next/image';
 import styles from './page.module.css';
-import { getXataClient } from '../src/xata';
 import Search from "./search";
 
-// const xata = getXataClient();
-
-const GENRES = ["Role-playing (RPG)", "Point-and-click", "Puzzle", "Adventure", "Sport", "Card & Board Game", "Platform", "Racing", "Fighting", "Music", "Strategy", "Arcade", "Shooter", "Simulator", "Turn-based strategy (TBS)", "Real Time Strategy (RTS)", "Hack and slash/Beat 'em up", "Quiz/Trivia", "Tactical", "Pinball", "Indie", "Visual Novel"];
 
 export default async function Home() {
 
@@ -17,17 +13,6 @@ export default async function Home() {
         </h1>
 
         <Search />
-
-        {/* <div className={styles.grid}>
-          {records.map(g => 
-            <a href={g.url || ""} className={styles.card} >
-              <h2>{g.name}</h2>
-              <p>{g.console}</p>
-            </a>
-          )}
-        </div> */}
-
-
 
         
       </main>
