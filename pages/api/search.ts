@@ -9,12 +9,12 @@ export default async function handler(
   res: NextApiResponse
 ) {
   
-  let {term, console} = req.query;
+  let {term, console, genre} = req.query;
   if (Array.isArray(term)) {
     term = term.join(" ");
   }  
   
-  const records = await xata.search.all(term, {
+  const records = await xata.search.all(term as string, {
     tables: [console && console.length 
       ? { 
           table: "games" ,

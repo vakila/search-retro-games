@@ -3,9 +3,7 @@ import { getXataClient } from "../../../src/xata";
 const xata = getXataClient();
 
 
-export default async function Page({params}: {
-    params: {genre: string}
-}) {
+export default async function Page({params}: any) {
     console.log("GENRE", params.genre, JSON.stringify(params.genre));
 
     const result = await xata.db.games
