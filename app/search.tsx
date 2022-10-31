@@ -4,7 +4,7 @@ import Image from 'next/image';
 import styles from '../app/page.module.css';
 import { use, useState, useEffect } from 'react';
 import Link from 'next/link';
-import * as debounce from 'lodash.debounce';
+import debounce from 'lodash.debounce';
 import { CONSOLES, getConsoleName } from "../src/consoles";
 import type { Games } from '../src/xata';
 
