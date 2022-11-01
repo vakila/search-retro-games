@@ -1,3 +1,34 @@
+# Search Retro Games 
+An app powered by [Next 13](https://beta.nextjs.com), [Xata](https://xata.io), and games data collected by [Sara Vieira](https://github.com/SaraVieira/lets-play-retro-games)
+
+Developed by [Anjana Vakil](https://twitter.com/AnjanaVakil) with support from Xata
+
+## Features
+- Full-text search through a database of 7K+ games
+- Filter search results by console (NES, Game Boy, Playstation, etc.)
+- Top-rated games appear first in results
+- Aggregate total number of games
+- Debounced search input & timed search operation
+- Game details pages with additional info and links to [IGDB](https://idgb.com)
+
+## Implementation details
+- Uses the brand-new (at time of development) `app/` directory of Next 13 
+- Makes use of both client components (interactive search page) & server components (static game page)
+- Retrieves data from Xata's serverless data platform
+- Powered by Xata's built-in search functionality, including filtering & boosting
+- Uses an internal API to retrieve data without exposing secrets to client
+
+
+## See also
+
+- Written tutorial
+- Livestream recording
+- Sara Vieira's [letsplayretro.games](https://letsplayretro.games)
+
+
+---
+
+# create-next-app
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
