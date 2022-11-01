@@ -21,9 +21,9 @@ Developed by [Anjana Vakil](https://twitter.com/AnjanaVakil) with support from X
 
 ## See also
 
-- Written tutorial
-- Livestream recording
 - Sara Vieira's [letsplayretro.games](https://letsplayretro.games)
+- Written Xata + Next 13 tutorial [link TBA]
+- Twitch livestream [link TBA]
 
 
 ---
