@@ -1,19 +1,17 @@
-import Image from 'next/image';
-import styles from './page.module.css';
+import Image from "next/image";
+import styles from "./page.module.css";
 import Search from "./search";
-
-
 
 import { getXataClient } from "../util/xata";
 
 const xata = getXataClient();
 
-
 export default async function Home() {
-
-  const {aggs: {totalCount}} = await xata.db.games.aggregate({
+  const {
+    aggs: { totalCount },
+  } = await xata.db.games.aggregate({
     totalCount: {
-        count: "*",
+      count: "*",
     },
   });
 

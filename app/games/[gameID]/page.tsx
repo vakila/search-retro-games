@@ -1,8 +1,7 @@
-import styles from '../../page.module.css';
-import Link from 'next/link';
+import styles from "../../page.module.css";
+import Link from "next/link";
 import { getXataClient } from "../../../util/xata";
 import { getConsoleName } from "../../../util/consoles";
-
 
 const xata = getXataClient();
 

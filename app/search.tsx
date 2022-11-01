@@ -1,13 +1,12 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import styles from '../app/page.module.css';
-import { use, useState, useEffect } from 'react';
-import Link from 'next/link';
-import debounce from 'lodash.debounce';
+import Image from "next/image";
+import styles from "../app/page.module.css";
+import { use, useState, useEffect } from "react";
+import Link from "next/link";
+import debounce from "lodash.debounce";
 import { CONSOLES, getConsoleName } from "../util/consoles";
 import type { Games } from "../util/xata";
-
 
 const searchGames = async (
   term: string,
