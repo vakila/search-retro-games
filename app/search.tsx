@@ -52,7 +52,10 @@ export default function Search() {
   }
 
   return (
-    <div className={styles.container} style={{ display: "flex", width: "80%" }}>
+    <div
+      className={styles.container}
+      style={{ display: "flex", justifyContent: "center", width: "80%" }}
+    >
       <aside id="sidebar" style={{ paddingTop: "2rem" }}>
         <input
           type="search"
@@ -78,7 +81,7 @@ export default function Search() {
         ) : null}
       </aside>
 
-      <div className={styles.container} style={{ width: "70%" }}>
+      <div style={{ width: "70%" }}>
         {games.map(({ id, name, console, genres, cover }) => (
           <Link
             key={id}
@@ -88,9 +91,9 @@ export default function Search() {
           >
             <div
               style={{
-                display: "grid",
-                gridTemplateColumns: "75% 25%",
-                gap: ".75em",
+                display: "flex",
+                justifyContent: "space-between",
+                gap: "1em",
               }}
             >
               <div>
