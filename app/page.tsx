@@ -4,7 +4,7 @@ import Search from "./search";
 
 
 
-import { getXataClient } from "../src/xata";
+import { getXataClient } from "../util/xata";
 
 const xata = getXataClient();
 
