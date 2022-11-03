@@ -22,8 +22,8 @@ Developed by [Anjana Vakil](https://twitter.com/AnjanaVakil) with support from X
 ## See also
 
 - Sara Vieira's [letsplayretro.games](https://letsplayretro.games)
-- Written Xata + Next 13 tutorial [link TBA]
-- Twitch livestream [link TBA]
+- Written tutorial: [Searching for retro games with Xata & Next.js 13](https://dev.to/anjanavakil/searching-for-retro-games-with-next-13-xata-4e5g)
+- Livestream on [twitch.tv/anjanavakil](https://www.twitch.tv/videos/1641478425)
 
 
 ---
