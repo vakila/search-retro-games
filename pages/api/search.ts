@@ -12,7 +12,8 @@ export default async function handler(
     term = term.join(" ");
   }
 
-  const records = await xata.db.games.search(term as string, {
+  const start = Date.now();
+  const games = await xata.db.games.search(term as string, {
     filter:
       console && console.length
         ? { console: { $any: Array.isArray(console) ? console : [console] } }
@@ -21,6 +22,7 @@ export default async function handler(
     prefix: "phrase",
     boosters: [{ numericBooster: { column: "totalRating", factor: 2 } }],
   });
+  const elapsed = Date.now() - start;
 
-  res.status(200).json(records);
+  res.status(200).json({ games, elapsed });
 }
