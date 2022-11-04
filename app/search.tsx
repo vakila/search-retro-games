@@ -16,14 +16,12 @@ const searchGames = async (
   let url = `/api/search?term=${term}`;
   if (consoles && consoles.length)
     url += CONSOLES.filter((c, i) => consoles[i])
-      .map(c => `&console=${c.id}`)
+      .map((c) => `&console=${c.id}`)
       .join("");
 
-  const start = Date.now();
   const response = await fetch(url);
-  const elapsed = Date.now() - start;
 
-  const games = await response.json();
+  const { games, elapsed } = await response.json();
   return callback({ games, elapsed });
 };
 
@@ -32,7 +30,7 @@ const debouncedSearch = debounce(searchGames, 500);
 export default function Search() {
   const [searched, setSearched] = useState("");
   const [games, setGames] = useState<Games[]>([]);
-  const [consoles, setConsoles] = useState(CONSOLES.map(c => false));
+  const [consoles, setConsoles] = useState(CONSOLES.map((c) => false));
   const [isSearching, setIsSearching] = useState(false);
   const [searchMs, setSearchMs] = useState(0);
 
@@ -61,13 +59,13 @@ export default function Search() {
           type="search"
           value={searched}
           placeholder="title, genre, keyword..."
-          onChange={e => setSearched(e.target.value)}
+          onChange={(e) => setSearched(e.target.value)}
           style={{ fontSize: "1.2rem" }}
         />
         <div id="filters">
           <Checkboxes
             title="Console"
-            options={CONSOLES.map(c => c.name)}
+            options={CONSOLES.map((c) => c.name)}
             onChange={toggleConsole}
           />
         </div>
@@ -102,7 +100,7 @@ export default function Search() {
                 <p>
                   {genres &&
                     genres.length &&
-                    genres.map(g => JSON.parse(g)).join(", ")}
+                    genres.map((g) => JSON.parse(g)).join(", ")}
                 </p>
               </div>
               <p>{cover && <img src={cover} />}</p>
